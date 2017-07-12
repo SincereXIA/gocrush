@@ -6,6 +6,7 @@ import (
 	"testing"
 )
 
+// nolint
 func BenchmarkCrushStraw(b *testing.B) {
 	b.StopTimer()
 	tree := makeBenchStrawTree()
@@ -18,6 +19,7 @@ func BenchmarkCrushStraw(b *testing.B) {
 	b.StopTimer()
 }
 
+// nolint
 func BenchmarkCrushTree(b *testing.B) {
 	b.StopTimer()
 	r := rand.New(rand.NewSource(544564))
@@ -30,6 +32,7 @@ func BenchmarkCrushTree(b *testing.B) {
 	b.StopTimer()
 }
 
+// nolint
 func makeBenchStrawTree() *TestingNode {
 	var parent = new(TestingNode)
 	parent.Id = "ROOT"
@@ -83,6 +86,7 @@ func makeBenchStrawTree() *TestingNode {
 	return parent
 }
 
+// nolint
 func makeBenchSimpleStrawTree() *TestingNode {
 	var parent = new(TestingNode)
 	parent.Id = "ROOT"
@@ -136,6 +140,7 @@ func makeBenchSimpleStrawTree() *TestingNode {
 	return parent
 }
 
+// nolint
 func makeBenchTreeTree() *TestingNode {
 	var parent = new(TestingNode)
 	parent.Id = "ROOT"
@@ -189,6 +194,7 @@ func makeBenchTreeTree() *TestingNode {
 	return parent
 }
 
+// nolint
 func makeBenchSimpleTreeTree() *TestingNode {
 	var parent = new(TestingNode)
 	parent.Id = "ROOT"

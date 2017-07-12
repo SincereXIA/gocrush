@@ -33,7 +33,7 @@ func (n CrushNode) GetSelector() Selector {
 	return n.Selector
 }
 
-func (n CrushNode) SetSelector(Selector Selector) {
+func (n *CrushNode) SetSelector(Selector Selector) {
 	n.Selector = Selector
 }
 
@@ -67,12 +67,4 @@ func (n TestingNode) GetType() int {
 
 func (n TestingNode) GetChildren() []Node {
 	return n.Children
-}
-
-func TestCompare(n Node) bool {
-	tNode, ok := n.(TestingNode)
-	if ok {
-		return len(tNode.Children) > 0
-	}
-	return false
 }

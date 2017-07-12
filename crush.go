@@ -9,18 +9,18 @@ func Select(parent Node, input int64, count int, nodeType int, c Comparitor) []N
 	//if len(parent.Children) < count {
 	//	panic("Asked for more node than are available")
 	//}
-	var rPrime = int64(0)
+	var rPrime int64
 	for r := 1; r <= count; r++ {
 		var failure = 0
 		var loopbacks = 0
 		var escape = false
-		var retryOrigin = false
+		var retryOrigin bool
 		var out Node
 		for {
 			retryOrigin = false
 			var in = parent
 			var skip = make(map[Node]bool)
-			var retryNode = false
+			var retryNode bool
 			for {
 				retryNode = false
 				rPrime = int64(r + failure)

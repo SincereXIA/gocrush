@@ -4,6 +4,7 @@ import (
 	"bytes"
 	"crypto/sha1"
 	"encoding/binary"
+
 	"sort"
 )
 
@@ -71,16 +72,14 @@ func digestInt64(input int64) []byte {
 	binary.Write(buf, binary.LittleEndian, input)
 	bytes := buf.Bytes()
 	result := sha1.Sum(bytes)
-	var hash []byte
-	hash = make([]byte, 20)
+	hash := make([]byte, 20)
 	copy(hash[:], result[:20])
 	return hash
 }
 func digestBytes(input []byte) []byte {
 
 	result := sha1.Sum(input)
-	var hash []byte
-	hash = make([]byte, 20)
+	hash := make([]byte, 20)
 	copy(hash[:], result[:20])
 	return hash
 }
@@ -88,8 +87,7 @@ func digestBytes(input []byte) []byte {
 func digestString(input string) []byte {
 
 	result := sha1.Sum([]byte(input))
-	var hash []byte
-	hash = make([]byte, 20)
+	hash := make([]byte, 20)
 	copy(hash[:], result[:20])
 	return hash
 }

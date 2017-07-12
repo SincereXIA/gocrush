@@ -1,7 +1,5 @@
 package gocrush
 
-import ()
-
 type TreeSelector struct {
 	Node        Node
 	weights     []int64
@@ -33,27 +31,6 @@ func NewTreeSelector(n Node) *TreeSelector {
 
 	return t
 }
-
-/*func (t *TreeSelector) AddItem(n Node) {
-	var newSize int = len(t.Node.GetChildren()) + 1
-	var depth = calc_depth(newSize)
-	node := (((newSize - 1) + 1) << 1) - 1
-	var newSlice = make([]int64, 1<<uint(depth))
-	copy(newSlice, t.weights)
-	t.weights = newSlice
-	t.weights[node] = n.GetWeight()
-	var root int = len(t.weights) / 2
-	if depth >= 2 && (node-1) == root {
-		t.weights[root] = t.weights[root/2]
-	}
-	for j := 1; j < depth; j++ {
-		node = parent(node)
-		t.weights[node] += n.GetWeight()
-	}
-	t.Node.Children = append(t.Node.Children, n)
-	t.totalWeight += n.Weight
-
-}*/
 
 func height(n int) int {
 	var h int = 0
@@ -119,8 +96,6 @@ func (s *TreeSelector) Select(input int64, round int64) Node {
 
 		}
 	}
-	var result Node
-
-	result = s.Node.GetChildren()[n>>1]
+	result := s.Node.GetChildren()[n>>1]
 	return result
 }

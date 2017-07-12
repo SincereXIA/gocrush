@@ -1,10 +1,11 @@
 package gocrush
 
 import (
-	"github.com/stretchr/testify/assert"
 	"log"
 	"strconv"
 	"testing"
+
+	"github.com/stretchr/testify/assert"
 )
 
 const (
@@ -15,6 +16,7 @@ const (
 	DISK        = 4
 )
 
+// nolint
 func TestCrushStraw(t *testing.T) {
 	tree := makeStrawTree()
 	nodes1 := Select(tree, 15, 3, NODE, nil)
@@ -32,7 +34,6 @@ func TestCrushStraw(t *testing.T) {
 		log.Printf("[STRAW] For key %d got node : %s", 8789342322, node.GetId())
 	}
 	assert.Equal(t, len(tree.GetChildren()), 4, "")
-	//assert.Equal(t, len(tree.GetChildren()), 5, "")
 }
 
 func TestCrushStrawTreeChange(t *testing.T) {
@@ -61,6 +62,7 @@ func TestCrushStrawTreeChange(t *testing.T) {
 	//assert.Equal(t, len(tree.GetChildren()), 5, "")
 }
 
+// nolint
 func TestCrushTree(t *testing.T) {
 	tree := makeTreeTree()
 	nodes1 := Select(tree, 15, 3, NODE, nil)
@@ -81,6 +83,7 @@ func TestCrushTree(t *testing.T) {
 	//assert.Equal(t, len(tree.GetChildren()), 5, "")
 }
 
+// nolint
 func TestCrushTreeTreeChange(t *testing.T) {
 	tree := makeTreeTree()
 	var key int64 = 64646436
@@ -107,6 +110,7 @@ func TestCrushTreeTreeChange(t *testing.T) {
 	//assert.Equal(t, len(tree.GetChildren()), 5, "")
 }
 
+// nolint
 func makeStrawTree() *TestingNode {
 	var parent = new(TestingNode)
 	parent.Id = "ROOT"
@@ -160,6 +164,7 @@ func makeStrawTree() *TestingNode {
 	return parent
 }
 
+// nolint
 func makeSimpleStrawTree() *TestingNode {
 	var parent = new(TestingNode)
 	parent.Id = "ROOT"
@@ -213,6 +218,7 @@ func makeSimpleStrawTree() *TestingNode {
 	return parent
 }
 
+// nolint
 func makeTreeTree() *TestingNode {
 	var parent = new(TestingNode)
 	parent.Id = "ROOT"
@@ -266,6 +272,7 @@ func makeTreeTree() *TestingNode {
 	return parent
 }
 
+// nolint
 func makeSimpleTreeTree() *TestingNode {
 	var parent = new(TestingNode)
 	parent.Id = "ROOT"

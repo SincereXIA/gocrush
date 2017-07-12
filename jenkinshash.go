@@ -16,8 +16,8 @@ func hash1(a int64) int64 {
 	var x = int64(231232)
 	var y = int64(1232)
 	b := a
-	b, x, hash = hashMix(b, x, hash)
-	y, a, hash = hashMix(y, a, hash)
+	_, _, hash = hashMix(b, x, hash)
+	_, _, hash = hashMix(y, a, hash)
 	return hash
 }
 
@@ -26,8 +26,8 @@ func hash2(a, b int64) int64 {
 	var x = int64(231232)
 	var y = int64(1232)
 	a, b, hash = hashMix(a, b, hash)
-	x, a, hash = hashMix(x, a, hash)
-	b, y, hash = hashMix(b, y, hash)
+	_, _, hash = hashMix(x, a, hash)
+	_, _, hash = hashMix(b, y, hash)
 	return hash
 }
 
@@ -37,8 +37,8 @@ func hash3(a, b, c int64) int64 {
 	var y = int64(1232)
 	a, b, hash = hashMix(a, b, hash)
 	c, x, hash = hashMix(c, x, hash)
-	y, a, hash = hashMix(y, a, hash)
-	b, x, hash = hashMix(b, x, hash)
+	y, _, hash = hashMix(y, a, hash)
+	_, _, hash = hashMix(b, x, hash)
 	_, _, hash = hashMix(y, c, hash)
 
 	return hash
@@ -46,18 +46,19 @@ func hash3(a, b, c int64) int64 {
 
 func hash4(a, b, c, d int64) int64 {
 	var hash = xor(xor(xor(xor(CRUSH_HASH_SEED, a), b), c), d)
-	var x = int64(231232)
+	var x int64
 	var y = int64(1232)
 	a, b, hash = hashMix(a, b, hash)
-	c, x, hash = hashMix(c, d, hash)
+	_, x, hash = hashMix(c, d, hash)
 	c, x, hash = hashMix(a, x, hash)
-	y, a, hash = hashMix(y, b, hash)
-	b, x, hash = hashMix(c, x, hash)
+	y, _, hash = hashMix(y, b, hash)
+	_, _, hash = hashMix(c, x, hash)
 	_, _, hash = hashMix(y, d, hash)
 
 	return hash
 }
 
+// nolint
 func hashMix(a, b, c int64) (int64, int64, int64) {
 
 	a = subtract(a, b)

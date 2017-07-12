@@ -1,7 +1,5 @@
 package gocrush
 
-import ()
-
 type UniformSelector struct {
 	Node        Node
 	totalWeight int64
@@ -27,7 +25,7 @@ func NewUniformSelector(n Node) *UniformSelector {
 
 func (s *UniformSelector) Select(input int64, round int64) Node {
 	var size = len(s.Node.GetChildren())
-	var pr int64 = int64(round % int64(size))
+	var pr int64 = round % int64(size)
 	if s.curInput != input || s.perm == 0 {
 		s.curInput = input
 		if pr == 0 {

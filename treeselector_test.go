@@ -7,6 +7,7 @@ import (
 	"testing"
 )
 
+// nolint
 func TestTreeSelector(t *testing.T) {
 	node := new(TestingNode)
 	node.Children = make([]Node, 8)

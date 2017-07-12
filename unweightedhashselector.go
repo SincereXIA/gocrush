@@ -23,12 +23,13 @@ func (t utokenList) Swap(i, j int) {
 }
 
 func hashVal(bKey []byte) uint64 {
-	return ((uint64(bKey[3]) << 24) |
+	return (uint64(bKey[3]) << 24) |
 		(uint64(bKey[2]) << 16) |
 		(uint64(bKey[1]) << 8) |
-		(uint64(bKey[0])))
+		(uint64(bKey[0]))
 }
 
+// nolint
 func NewUnweightedHashSelector(n Node) *UnweightedHashSelector {
 	var s = new(UnweightedHashSelector)
 	if !n.IsLeaf() {
