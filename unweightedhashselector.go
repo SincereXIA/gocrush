@@ -41,7 +41,7 @@ func NewUnweightedHashSelector(n Node) *UnweightedHashSelector {
 		for _, node := range nodes {
 			var bKey []byte
 			for c := 0; c < factor; c++ {
-				bKey = digestString(fmt.Sprintf("%s-%s", node.GetId(), c))
+				bKey = digestString(fmt.Sprintf("%v-%v", node.GetId(), c))
 				for i := 0; i < 3; i++ {
 					key := hashVal(bKey[i*4 : i*4+4])
 					s.tokenMap[key] = node
